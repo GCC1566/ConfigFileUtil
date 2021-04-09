@@ -42,7 +42,7 @@ public abstract class AbstractConfigFileOperate implements ConfigFileOperate {
 
     @Override
     public String getStringValueByKey(String key) {
-        return String.valueOf(getStringValueByKey(key));
+        return String.valueOf(getValueByKey(key));
     }
 
     @Override
