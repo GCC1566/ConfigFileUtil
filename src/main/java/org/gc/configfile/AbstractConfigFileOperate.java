@@ -47,15 +47,21 @@ public abstract class AbstractConfigFileOperate implements ConfigFileOperate {
 
     @Override
     public Integer getIntValueByKey(String key) {
-        Object obj = getValueByKey(key);
-        if(obj instanceof Integer){
-            return (Integer)obj;
+        try{
+            return Integer.valueOf(getStringValueByKey(key));
+        }catch (Exception e){
+            logger.error("该key不存在 或 类型错误"+e.getMessage());
         }
-        return 0;
+        return null;
     }
 
     @Override
     public Boolean getBooleanValueByKey(String key) {
+        try{
+            return Boolean.valueOf(getStringValueByKey(key));
+        }catch (Exception e){
+            logger.error("该key不存在 或 类型错误"+e.getMessage());
+        }
         return null;
     }
 
