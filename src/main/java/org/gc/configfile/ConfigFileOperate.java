@@ -15,6 +15,10 @@ public interface ConfigFileOperate {
      */
     public void loadConfigFile(String fileurl);
 
+    /**
+     * 清空配置文件内容
+     */
+    public void clearConfigFileContent();
 
     /**
      * 刷新配置内容：重新读取配置文件
@@ -44,6 +48,20 @@ public interface ConfigFileOperate {
     public Integer getIntValueByKey(String key);
 
     /**
+     * 根据key获取Long类型配置值，时间戳等
+     * @param key key
+     * @return  int 配置内容
+     */
+    public Long getLongValueByKey(String key);
+
+    /**
+     * 根据key获取Double类型配置值
+     * @param key key
+     * @return  int 配置内容
+     */
+    public Double getDoubleValueByKey(String key);
+
+    /**
      * 根据key 获取 boolean 类型配置值
      * @param key key
      * @return boolean 配置内容
@@ -58,19 +76,19 @@ public interface ConfigFileOperate {
 
 
     /**
-     * 向配置文件写入内容
+     * 向配置文件追加内容
      * @param key key值
      * @param obj 数据值
      * @return boolean 是否写入成功
      */
-    public boolean writeContentToConfigFile(String key, Object obj);
+    public boolean addContentToConfigFile(String key, Object obj);
 
 
     /**
-     * 批量向配置文件中写入内容
+     * 批量向配置文件中追加内容
      * @param contents 批量内容
      * @return boolean 是否写入成功
      */
-    public boolean writeContentsToConfigFile(Map contents);
+    public boolean addContentsToConfigFile(Map contents);
 
 }

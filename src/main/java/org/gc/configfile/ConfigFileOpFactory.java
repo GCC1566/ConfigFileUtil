@@ -1,7 +1,9 @@
 package org.gc.configfile;
 
 import org.apache.log4j.Logger;
+import org.gc.configfile.json.JsonConfigFile;
 import org.gc.configfile.properties.PropertiesConfigFile;
+import org.gc.configfile.xml.XmlConfigFile;
 
 /**
 *@description: 配置文件操作器工厂
@@ -25,6 +27,10 @@ public class ConfigFileOpFactory {
                 return new PropertiesConfigFile(fileurl);
             case "ini":
                 return new PropertiesConfigFile(fileurl);
+            case "json":
+                return new JsonConfigFile(fileurl);
+            case "xml":
+                return new XmlConfigFile(fileurl);
             default:
                 logger.warn("该版本暂不支持此类配置文件的操作");
                 return null;
@@ -38,10 +44,6 @@ public class ConfigFileOpFactory {
      */
     private static String getFileType(String fileurl){
         int lastindex = fileurl.lastIndexOf(".");
-        return fileurl.substring(lastindex+1);
+        return fileurl.substring(lastindex+1).toLowerCase();
     }
-
-
-
-
 }
